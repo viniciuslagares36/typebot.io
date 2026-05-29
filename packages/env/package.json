@@ -33,17 +33,17 @@
         ],
         "defaultConfiguration": "production",
         "options": {
-          "command": "bun run compile",
-          "cwd": "packages/env"
+          "command": "bun run build",
+          "cwd": "packages/embeds/js"
         },
         "configurations": {
           "development": {
-            "command": "bun run compile",
-            "cwd": "packages/env"
+            "command": "bun run build",
+            "cwd": "packages/embeds/js"
           },
           "production": {
-            "command": "bun run compile",
-            "cwd": "packages/env"
+            "command": "bun run build",
+            "cwd": "packages/embeds/js"
           }
         }
       }
