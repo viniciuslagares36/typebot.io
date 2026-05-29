@@ -21,7 +21,7 @@
     }
   },
   "scripts": {
-    "build": "esbuild src/index.ts src/web.ts --bundle --minify --sourcemap --format=esm --outdir=dist --platform=browser --conditions=style"
+    "build": "node esbuild.config.cjs"
   },
   "devDependencies": {
     "@ai-sdk/ui-utils": "^1.2.11",
