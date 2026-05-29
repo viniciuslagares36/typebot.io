@@ -27,27 +27,23 @@
   "nx": {
     "targets": {
       "build": {
-        "executor": "@nx/esbuild:esbuild",
+        "executor": "nx:run-commands",
         "outputs": [
-          "{options.outputPath}"
+          "{projectRoot}/dist"
         ],
         "defaultConfiguration": "production",
         "options": {
-          "main": "packages/env/src/index.ts",
-          "outputPath": "packages/env/dist",
-          "tsConfig": "packages/env/tsconfig.lib.json",
-          "platform": "node",
-          "format": [
-            "esm"
-          ],
-          "declarationRootDir": "packages/env/src"
+          "command": "bun run compile",
+          "cwd": "packages/env"
         },
         "configurations": {
           "development": {
-            "minify": false
+            "command": "bun run compile",
+            "cwd": "packages/env"
           },
           "production": {
-            "minify": true
+            "command": "bun run compile",
+            "cwd": "packages/env"
           }
         }
       }
