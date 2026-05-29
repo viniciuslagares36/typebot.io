@@ -4,24 +4,24 @@
   "description": "Javascript library to display typebots on your website",
   "license": "FSL-1.1-ALv2",
   "type": "module",
-  "main": "./src/index.ts",
-  "module": "./src/index.ts",
-  "types": "./src/index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/packages/embeds/js/src/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "types": "./src/index.ts",
-      "import": "./src/index.ts",
-      "default": "./src/index.ts"
+      "types": "./dist/packages/embeds/js/src/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./web": {
-      "types": "./src/web.ts",
-      "import": "./src/web.ts",
-      "default": "./src/web.ts"
+      "types": "./dist/packages/embeds/js/src/web.d.ts",
+      "import": "./dist/web.js",
+      "default": "./dist/web.js"
     }
   },
   "scripts": {
-    "build": "echo \"Next.js will compile source directly\""
+    "build": "node esbuild.config.cjs"
   },
   "devDependencies": {
     "@ai-sdk/ui-utils": "^1.2.11",
@@ -61,17 +61,22 @@
     "targets": {
       "build": {
         "executor": "nx:run-commands",
-        "outputs": [],
+        "outputs": [
+          "{projectRoot}/dist"
+        ],
         "defaultConfiguration": "production",
         "options": {
-          "command": "echo 'Skipping bundle compilation'"
+          "command": "bun run build",
+          "cwd": "packages/embeds/js"
         },
         "configurations": {
           "development": {
-            "command": "echo 'Skipping bundle compilation'"
+            "command": "bun run build",
+            "cwd": "packages/embeds/js"
           },
           "production": {
-            "command": "echo 'Skipping bundle compilation'"
+            "command": "bun run build",
+            "cwd": "packages/embeds/js"
           }
         }
       }
