@@ -13,43 +13,29 @@
     },
     "./package.json": "./package.json"
   },
+  "scripts": {
+    "build": "esbuild src/index.ts src/web.ts --bundle --minify --splitting --format=esm --outdir=dist --platform=browser --external:react --external:react/jsx-runtime"
+  },
   "nx": {
     "targets": {
       "build": {
-        "executor": "@nx/esbuild:esbuild",
+        "executor": "nx:run-commands",
         "outputs": [
-          "{options.outputPath}"
+          "{projectRoot}/dist"
         ],
         "defaultConfiguration": "production",
         "options": {
-          "outputPath": "{workspaceRoot}/packages/embeds/react/dist",
-          "main": "{workspaceRoot}/packages/embeds/react/src/index.ts",
-          "additionalEntryPoints": [
-            "{workspaceRoot}/packages/embeds/react/src/web.ts"
-          ],
-          "tsConfig": "{workspaceRoot}/packages/embeds/react/tsconfig.lib.json",
-          "platform": "browser",
-          "esbuildOptions": {
-            "splitting": true
-          },
-          "format": [
-            "esm"
-          ],
-          "bundle": true,
-          "thirdParty": true,
-          "external": [
-            "react",
-            "react/jsx-runtime"
-          ],
-          "declaration": true
+          "command": "bun run build",
+          "cwd": "packages/embeds/react"
         },
         "configurations": {
           "development": {
-            "minify": false,
-            "deleteOutputPath": false
+            "command": "bun run build",
+            "cwd": "packages/embeds/react"
           },
           "production": {
-            "minify": true
+            "command": "bun run build",
+            "cwd": "packages/embeds/react"
           }
         }
       }
