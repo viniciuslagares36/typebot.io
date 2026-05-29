@@ -20,6 +20,9 @@
       "default": "./dist/web.js"
     }
   },
+  "scripts": {
+    "build": "esbuild src/index.ts src/web.ts --bundle --minify --sourcemap --format=esm --outdir=dist --platform=browser"
+  },
   "devDependencies": {
     "@ai-sdk/ui-utils": "^1.2.11",
     "@ark-ui/solid": "^5.19.0",
@@ -57,34 +60,23 @@
   "nx": {
     "targets": {
       "build": {
-        "executor": "@nx/esbuild:esbuild",
+        "executor": "nx:run-commands",
         "outputs": [
-          "{options.outputPath}"
+          "{projectRoot}/dist"
         ],
         "defaultConfiguration": "production",
         "options": {
-          "outputPath": "{workspaceRoot}/packages/embeds/js/dist",
-          "main": "{workspaceRoot}/packages/embeds/js/src/index.ts",
-          "additionalEntryPoints": [
-            "{workspaceRoot}/packages/embeds/js/src/web.ts"
-          ],
-          "tsConfig": "{workspaceRoot}/packages/embeds/js/tsconfig.lib.json",
-          "platform": "browser",
-          "format": [
-            "esm"
-          ],
-          "bundle": true,
-          "thirdParty": true,
-          "declaration": true,
-          "esbuildConfig": "{workspaceRoot}/packages/embeds/js/esbuild.config.cjs"
+          "command": "bun run build",
+          "cwd": "packages/embeds/js"
         },
         "configurations": {
           "development": {
-            "minify": false,
-            "deleteOutputPath": false
+            "command": "bun run build",
+            "cwd": "packages/embeds/js"
           },
           "production": {
-            "minify": true
+            "command": "bun run build",
+            "cwd": "packages/embeds/js"
           }
         }
       }
