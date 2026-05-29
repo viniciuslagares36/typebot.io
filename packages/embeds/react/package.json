@@ -14,17 +14,14 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "build": "echo \"Next.js will compile source directly\""
+    "build": "echo \"Skipping compilation\""
   },
   "nx": {
     "targets": {
       "build": {
-        "executor": "nx:run-commands",
+        "executor": "@nx/js:noop",
         "outputs": [],
-        "defaultConfiguration": "production",
-        "options": {
-          "command": "bun run build"
-        }
+        "defaultConfiguration": "production"
       }
     }
   },
