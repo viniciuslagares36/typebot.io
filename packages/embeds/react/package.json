@@ -4,39 +4,26 @@
   "description": "Convenient library to display typebots on your React app",
   "license": "FSL-1.1-ALv2",
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/packages/embeds/react/src/index.d.ts",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "exports": {
     ".": {
-      "types": "./dist/packages/embeds/react/src/index.d.ts",
-      "default": "./dist/index.js"
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
     },
     "./package.json": "./package.json"
   },
   "scripts": {
-    "build": "esbuild src/index.ts src/web.ts --bundle --minify --splitting --format=esm --outdir=dist --platform=browser --external:react --external:react/jsx-runtime --external:@typebot.io/js --external:@typebot.io/js/web"
+    "build": "echo 'Next.js will compile this package source directly'"
   },
   "nx": {
     "targets": {
       "build": {
         "executor": "nx:run-commands",
-        "outputs": [
-          "{projectRoot}/dist"
-        ],
+        "outputs": [],
         "defaultConfiguration": "production",
         "options": {
-          "command": "bun run build",
-          "cwd": "packages/embeds/react"
-        },
-        "configurations": {
-          "development": {
-            "command": "bun run build",
-            "cwd": "packages/embeds/react"
-          },
-          "production": {
-            "command": "bun run build",
-            "cwd": "packages/embeds/react"
-          }
+          "command": "bun run build"
         }
       }
     }
