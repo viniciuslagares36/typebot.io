@@ -33,14 +33,14 @@
         ],
         "defaultConfiguration": "production",
         "options": {
-          "main": "{workspaceRoot}/packages/env/src/index.ts",
-          "outputPath": "{workspaceRoot}/packages/env/dist",
-          "tsConfig": "{workspaceRoot}/packages/env/tsconfig.lib.json",
+          "main": "packages/env/src/index.ts",
+          "outputPath": "packages/env/dist",
+          "tsConfig": "packages/env/tsconfig.lib.json",
           "platform": "node",
           "format": [
             "esm"
           ],
-          "declarationRootDir": "{workspaceRoot}/packages/env/src"
+          "declarationRootDir": "packages/env/src"
         },
         "configurations": {
           "development": {
