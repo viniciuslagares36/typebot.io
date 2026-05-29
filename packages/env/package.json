@@ -35,7 +35,7 @@
         "options": {
           "main": "src/index.ts",
           "outputPath": "dist",
-          "tsConfig": "tsconfig.lib.json",
+          "tsConfig": "./tsconfig.lib.json",
           "platform": "node",
           "format": [
             "esm"
